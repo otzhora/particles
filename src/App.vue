@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="text">0 FPS</div>
+    <div id="particlesContainer"></div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  mounted() {
+    const particles = require("./particles");
+    const P5 = require("p5");
+    new P5(particles.main);
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+#particlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+#text {
+  position: absolute;
+  margin: 0;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #eeeeee;
+  font-size: 128px;
+  font-weight: bold;
+  z-index: 10;
 }
 </style>
+
